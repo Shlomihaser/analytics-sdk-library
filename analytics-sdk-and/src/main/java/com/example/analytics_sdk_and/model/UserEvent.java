@@ -8,8 +8,7 @@ public class UserEvent {
     private long timestamp;
     private Map<String, Object> metadata;
 
-    public UserEvent() {
-    }
+    public UserEvent() {}
 
     public UserEvent(String eventType, long timestamp, Map<String, Object> metadata) {
         this.eventType = eventType;
@@ -17,11 +16,9 @@ public class UserEvent {
         this.metadata = metadata;
     }
 
-    // getters ו- setters
     public String getId() {
         return id;
     }
-
     public void setId(String id) {
         this.id = id;
     }
@@ -29,7 +26,6 @@ public class UserEvent {
     public String getEventType() {
         return eventType;
     }
-
     public void setEventType(String eventType) {
         this.eventType = eventType;
     }
@@ -37,7 +33,6 @@ public class UserEvent {
     public long getTimestamp() {
         return timestamp;
     }
-
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
@@ -45,7 +40,6 @@ public class UserEvent {
     public Map<String, Object> getMetadata() {
         return metadata;
     }
-
     public void setMetadata(Map<String, Object> metadata) {
         this.metadata = metadata;
     }

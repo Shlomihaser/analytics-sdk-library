@@ -16,7 +16,8 @@ public interface UserEventApi {
 
     @GET("/api/events")
     Call<List<UserEvent>> getAllEvents();
-
+    
     @DELETE("/api/events/{id}")
     Call<Void> deleteEvent(@Path("id") String id);
+
 }

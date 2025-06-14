@@ -18,16 +18,8 @@ public class AnalyticsSdk {
     private UserEventApi api;
 
     private AnalyticsSdk(String baseUrl) {
-        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-        OkHttpClient client = new OkHttpClient.Builder()
-                .addInterceptor(logging)
-                .build();
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
-                .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -36,9 +28,8 @@ public class AnalyticsSdk {
 
 
     public static AnalyticsSdk getInstance(String baseUrl) {
-        if (instance == null) {
+        if (instance == null)
             instance = new AnalyticsSdk(baseUrl);
-        }
         return instance;
     }
 
@@ -48,11 +39,10 @@ public class AnalyticsSdk {
         call.enqueue(new Callback<UserEvent>() {
             @Override
             public void onResponse(Call<UserEvent> call, Response<UserEvent> response) {
-                if (response.isSuccessful() && response.body() != null) {
+                if (response.isSuccessful() && response.body() != null)
                     callback.onSuccess(response.body());
-                } else {
+                else
                     callback.onError(new Exception("Response unsuccessful or empty"));
-                }
             }
 
             @Override
@@ -68,11 +58,10 @@ public class AnalyticsSdk {
         call.enqueue(new Callback<List<UserEvent>>() {
             @Override
             public void onResponse(Call<List<UserEvent>> call, Response<List<UserEvent>> response) {
-                if (response.isSuccessful() && response.body() != null) {
+                if (response.isSuccessful() && response.body() != null)
                     callback.onSuccess(response.body());
-                } else {
+                else
                     callback.onError(new Exception("Response unsuccessful or empty"));
-                }
             }
 
             @Override
@@ -88,11 +77,10 @@ public class AnalyticsSdk {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                if (response.isSuccessful()) {
+                if (response.isSuccessful())
                     callback.onSuccess(null);
-                } else {
+                else
                     callback.onError(new Exception("Response unsuccessful"));
-                }
             }
 
             @Override
